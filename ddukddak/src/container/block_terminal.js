@@ -21,6 +21,7 @@ class BlockTerminal extends Component{
         this.setState({ workspace });
     }
     render(){
+        return(
         <div className="block_terminal">
             <BlocklyDrawer
                 workspaceXML = {this.workspace}
@@ -49,6 +50,7 @@ class BlockTerminal extends Component{
 				</Category>                
             </BlocklyDrawer>
         </div>
+        );
     }
 } 
 
