@@ -1,4 +1,6 @@
-const helloWorld =  {
+import Blockly from 'node-blockly/browser';
+
+const helloWorld = {
     name: 'HelloWorld',
     category: 'Demo',
     block: {
