@@ -1,6 +1,6 @@
 import React, {Component}from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreator} from 'redux';
+import {bindActionCreators} from 'redux';
 
 import BlocklyDrawer, {Block, Category} from 'react-blockly-drawer';
 
@@ -53,7 +53,7 @@ class BlockTerminal extends Component{
 } 
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreator({fetchCode},dispatch);
+    return bindActionCreators({fetchCode},dispatch);
 }
 
 export default connect(null,mapDispatchToProps)(BlockTerminal);
