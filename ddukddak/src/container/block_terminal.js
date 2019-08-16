@@ -13,7 +13,6 @@ class BlockTerminal extends Component{
     constructor(props){
         super(props);
         this.state = {workspace : ''};
-        
         // workspace있으면 불러오는 코드 추가 필요
     }
     onChangeState(code,workspace){
