@@ -1,8 +1,8 @@
 export const FETCH_CODE = 'FETCH_CODE';
 
-export function fetchCode(code){
+export function fetchCode(code, workspace){
     return {
         type : FETCH_CODE,
-        payload : code
+        payload : [code, workspace]
     }
 }
