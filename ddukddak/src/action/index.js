@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const FETCH_CODE = 'FETCH_CODE';
 
 export function fetchCode(code, workspace){
