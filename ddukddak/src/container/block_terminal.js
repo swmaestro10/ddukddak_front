@@ -12,9 +12,8 @@ import './block_terminal.css'
 class BlockTerminal extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            workspace : null
-        };
+        this.state = {workspace : ''};
+
     }
     onChangeState(code,workspace){
         this.props.fetchCode(code);
@@ -24,7 +23,7 @@ class BlockTerminal extends Component{
         return(
         <div className="block_terminal">
             <BlocklyDrawer
-                workspaceXML = {this.workspace}
+                workspaceXML = {this.state.workspace}
                 tools={[helloWorld,test_operation,test_print,short_math]}
                 onChange={(code,workspace) => {
                     if(code !== ""){
