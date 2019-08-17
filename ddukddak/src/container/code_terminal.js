@@ -17,9 +17,9 @@ class CodeTerminal extends Component {
             method : 'get',
             url : 'http://ddukddak.io/class/sub/submit',
             data : {
-                token : TOKEN,
-                subclass : "1",
-                code : `"${this.props.code[0]}"`
+                "token" : TOKEN,
+                "subclass" : "1",
+                "code" : `"${this.props.code[0]}"`
             }
         });
         console.log(result);
