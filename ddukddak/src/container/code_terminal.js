@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import './code_terminal.css';
 
-const TOKEN = '3fTNLrtYNwF2vP/cs9diXifNPn+/yMowugeHigEJ+oBIlHVlbSYeys4rh7EvSkjmdn0r6+gCC6klwrvbZmTvEtHpE/iaE9C2tfD3F2CpipgYz8axkHTc0UMhxAQ+3woT5q4GAEsJ/7Fvop7DlBRTY+0BekMG/++KmDRQpJqX7eY/FMLENdd2J4hVuXmd8oUH5g6RwAK/vVIzA8hvAIgRWnukez6+pgjR0nCvm2VRGpFz20KNl0AuzwEo+f+BoSeT9XG4dd1i8TSWUACkS71lw7ixA/+3Eix+WIX105sTciEFoblGaOvygAq6Mob8eRLGWOEA0jslJ0ay4ZTD3kn5AHPLh5Zdf89IzepKi0luuFCZ+vC9a+UMJ7QjNfsIBicOYemjFg1m+lWLBBCaD94U9sxgayFxI9k7ZqYCIXnkQy8bPgyI';
+const TOKEN = "Tc5Ly0FLEzgmJ7uU+NpzkedS8FpzL14dFVVvzhN+uaD6Y3iYBLpSD9v8ySsMTVdfAZRpKLpNeht1LeAPeKmNUagxw1y0XbekE95MQ+E5xa85WUuFW2dAkkheceuuBvucVJdvDq9YycIHfSPdJ/Nj2uVFMMxvQlt+TxCjYPNASl21N4bzz/5QvQmqIKeh2fQ8j8D/nwxzKOYItL7S1J3FKi+aeysmvXbgnXX11JvEtr+O2nZ2FFL+g1tWuFhJ1tyzC3IH84oNKMNIMeecdNrQ30GxM3ZTaUg7KPL/06zb81+r3lpE18vVAC6EKQ9oK6t2EeRnIZv8isZmA95d17GpeL+PlraKf3St5YTzXQnCYRJb+Q6rvk7+VaN8vSelQ2E0gbEdrb1VbxhEZn7FPyJzqrhazyTrx+EXFn+MN7GA9c1s7AzNUXSqaA==";
 
 class CodeTerminal extends Component {
     constructor(props){
@@ -18,8 +18,8 @@ class CodeTerminal extends Component {
             url : 'http://ddukddak.io/class/sub/submit',
             data : {
                 token : TOKEN,
-                scid : 1,
-                code : this.props.code[0]
+                subclass : "1",
+                code : `"${this.props.code[0]}"`
             }
         });
         console.log(result);
