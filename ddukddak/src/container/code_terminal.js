@@ -13,10 +13,15 @@ class CodeTerminal extends Component {
         this.onSubmitCode = this.onSubmitCode.bind(this);
     }
     onSubmitCode(){
-        const result = axios({
-            method : 'get',
-            url : 'http://52.78.238.217'
-        });
+        const result = axios.get(
+            'http://52.78.238.217/class/sub/submit',
+            {
+                params : {
+                    token : TOKEN,
+                    subclass : "1",
+                    code : this.props.code[0]
+                }
+            });
         console.log(result);
     }
     render(){
