@@ -6,7 +6,8 @@ class Tutorial extends React.Component{
 	constructor(props){
 		super(props);
 		
-		this.state = {discription : ""}
+		this.state = {discription : ""};
+		this.updateDiscription();
 	}
 	updateDiscription = async() => {
 		const result = await axios.get(
@@ -17,7 +18,7 @@ class Tutorial extends React.Component{
 					"class" : "1"
 				}
 			});
-		console.log(result);
+		this.setState({discription : result});
 	}
     render(){
         return (
