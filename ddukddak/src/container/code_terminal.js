@@ -11,6 +11,7 @@ class CodeTerminal extends Component {
         this.onSubmitCode = this.onSubmitCode.bind(this);
     }
     onSubmitCode= async() => {
+        console.log(this.props.code[0]);
         const result = await axios.get(
             'http://52.78.238.217/class/sub/submit',
             {
@@ -21,7 +22,6 @@ class CodeTerminal extends Component {
                 }
             });
         console.log(result);
-        console.log(this.props.code[0]);
     }
     render(){
         return(
