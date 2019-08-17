@@ -15,7 +15,7 @@ class CodeTerminal extends Component {
     onSubmitCode(){
         const result = axios({
             method : 'get',
-            url : 'http://ddukddak.io/class/sub/submit',
+            url : 'http://52.78.238.217/class/sub/submit',
             data : {
                 "token" : TOKEN,
                 "subclass" : "1",
