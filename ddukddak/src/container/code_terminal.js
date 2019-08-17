@@ -17,9 +17,9 @@ class CodeTerminal extends Component {
             'http://52.78.238.217/class/sub/submit',
             {
                 params : {
-                    token : TOKEN,
-                    subclass : "1",
-                    code : this.props.code[0]
+                    "token" : TOKEN,
+                    "subclass" : "1",
+                    "code" : `"${this.props.code[0]}"`
                 }
             });
         console.log(result);
