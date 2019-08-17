@@ -14,7 +14,7 @@ class CodeTerminal extends Component {
     }
     onSubmitCode= async() => {
         const result = await axios.get(
-            'http://52.78.238.217/user/login',
+            'http://52.78.238.217/class/sub/submit',
             {
                 params : {
                     "token": TOKEN,
