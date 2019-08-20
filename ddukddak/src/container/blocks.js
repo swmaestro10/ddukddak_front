@@ -144,6 +144,7 @@ const model = {
 					type : 'input_value',
 					name : 'epoch',
 				}],
+				output: 'String',
 				colour : 50,
 				tooltip : 'Model',
 			});
@@ -179,8 +180,8 @@ const Layer = {
 		},
 	},
 	generator : (block) => {
-		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `learning_rate = ${message} `;
+		const message = `'${Blockly.Python.statementToCode(block,'SELECT')}'`;
+		const code = `${message}`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
