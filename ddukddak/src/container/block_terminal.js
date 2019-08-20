@@ -35,7 +35,7 @@ class BlockTerminal extends Component{
                         categories : {
                             Model : {colour : '50'},
                             Data : { colour : '200' },
-                            Layer : { colour : '150' },
+                            modelLayer : { colour : '150' },
                             Training : { colour : '100' },
                             Demo : { colour : '270' },
                             test : { colour : '160' },

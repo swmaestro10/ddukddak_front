@@ -60,36 +60,6 @@ const testData = {
 	},
 };
 
-// Category : Layer
-const modelLayer = {
-	name : 'ModelLayer',
-	category : 'Layer',
-	block : {
-		init : function() {
-			this.jsonInit({
-				message0 : '학습 속도 %1',
-				args0 : [{
-					type : 'field_dropdown',
-					name : 'SELECT',
-					options : [
-						["A","nn.ReLU"],
-						["B","nn.LogSigmoid"],
-					],
-				},],
-				output: 'String',
-				colour : 165,
-				tooltip : 'ModelLayer',
-				nextStatement : null,
-				previousStatement : null,
-			});
-		},
-	},
-	generator : (block) => {
-		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `learning_rate = ${message} `;
-		return [code, Blockly.Python.ORDER_ATOMIC];
-	},
-};
 // Category : Training
 const learningRate = {
 	name : 'LearningRate',
@@ -186,14 +156,43 @@ const model = {
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
+// Category : Layer
+const Layer = {
+	name : 'modelLayer',
+	category : 'modelLayer',
+	block : {
+		init : function() {
+			this.jsonInit({
+				message0 : '학습 속도 %1',
+				args0 : [{
+					type : 'field_dropdown',
+					name : 'SELECT',
+					options : [
+						["A","nn.ReLU"],
+						["B","nn.LogSigmoid"],
+					],
+				},],
+				colour : 165,
+				tooltip : 'modelLayer',
+				nextStatement : null,
+				previousStatement : null,
+			});
+		},
+	},
+	generator : (block) => {
+		const message = `'${block.getFieldValue('SELECT')}'`;
+		const code = `learning_rate = ${message} `;
+		return [code, Blockly.Python.ORDER_ATOMIC];
+	},
+};
 
 const blocks =[
+	model,
 	trainData, 
 	testData,
-	modelLayer,
+	Layer,
 	learningRate,
-	epochs,
-	model
+	epochs
 ];
 export {
 	blocks
