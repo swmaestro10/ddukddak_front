@@ -144,15 +144,15 @@ const model = {
 					type : 'input_value',
 					name : 'epoch',
 				}],
-				output: 'String',
 				colour : 50,
 				tooltip : 'Model',
 			});
 		},
 	},
 	generator : (block) => {
-		const message = `'${block.getFieldValue('train')}'`;
-		const code = `test_code`;
+		const train = `'${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ADDITION)}'`;
+		const test =  `'${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ADDITION)}'`;
+		const code = train + test;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
