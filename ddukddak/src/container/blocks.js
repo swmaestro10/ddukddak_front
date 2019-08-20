@@ -196,6 +196,30 @@ const epochs = {
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
+const helloWorld =  {
+    name: 'train',
+    category: 'Demo',
+    block: {
+      init: function () {
+        this.jsonInit({
+          message0: '학습 데이터 %1',
+          args0: [
+            {
+              type: 'field_input',
+              name: 'NAME',
+            },
+          ],
+          colour: 160,
+          tooltip: 'Says Hello',
+        });
+      },
+    },
+    generator: (block) => {
+      const message = `'${block.getFieldValue('NAME')}'` || '\'\'';
+      const code = `console.log('Hello ${message}')`;
+      return [code, Blockly.JavaScript.ORDER_MEMBER];
+    },
+  };
 
 const blocks =[
 	trainData, 
@@ -205,6 +229,7 @@ const blocks =[
 	modelLayer3,
 	learningRate,
 	epochs,
+	helloWorld
 ]
 export {
 	blocks
