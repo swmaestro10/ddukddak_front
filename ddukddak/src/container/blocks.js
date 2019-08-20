@@ -27,6 +27,7 @@ const data = {
 					type: 'input_value',
 					name: 'test',   
 				}],
+				output: 'String',
 				nextStatement : null,
 				colour: 200,
 				tooltip: 'Data',
