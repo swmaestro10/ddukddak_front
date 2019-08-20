@@ -33,7 +33,7 @@ const trainData = {
 	generator : (block) => {
 		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
 		const code = `training_num=${message} `;
-		return [code, Blockly.Python.ORDER_ATOMIC];
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 const testData = {
@@ -56,7 +56,7 @@ const testData = {
 	generator : (block) => {
 		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
 		const code = `test_num=${message} `;
-		return [code, Blockly.Python.ORDER_ATOMIC];
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 
@@ -86,7 +86,7 @@ const learningRate = {
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
 		const code = `learning_rate = ${message} `;
-		return [code, Blockly.Python.ORDER_ATOMIC];
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 const epochs = {
@@ -113,7 +113,7 @@ const epochs = {
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
 		const code = `num_epochs = ${message} `;
-		return [code, Blockly.Python.ORDER_ATOMIC];
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 // model
@@ -144,16 +144,20 @@ const model = {
 					type : 'input_value',
 					name : 'epoch',
 				}],
+				output : 'String',
 				colour : 50,
 				tooltip : 'Model',
 			});
 		},
 	},
 	generator : (block) => {
-		const train = `'${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ADDITION)}'`;
-		const test =  `'${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ADDITION)}'`;
-		const code = train + test;
-		return [code, Blockly.Python.ORDER_ATOMIC];
+		const train = `${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
+		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
+		const model =  `${Blockly.JavaScript.statementToCode(block, 'model') || '0'}`;
+		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
+		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
+		const code = `${train}${test}${model}${rate}${epoch}`
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 // Category : Layer
@@ -168,8 +172,8 @@ const Layer = {
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
-						["A","nn.ReLU"],
-						["B","nn.LogSigmoid"],
+						["A","nn_ReLU"],
+						["B","nn_LogSigmoid"],
 					],
 				},],
 				colour : 165,
@@ -180,9 +184,9 @@ const Layer = {
 		},
 	},
 	generator : (block) => {
-		const message = `'${Blockly.Python.valueToCode(block,'SELECT',Blockly.Python.ORDER_ATOMIC)}'`;
+		const message = `${Blockly.JavaScript.valueToCode(block,'SELECT',Blockly.JavaScript.ORDER_ATOMIC)}`;
 		const code = `${message}`;
-		return [code, Blockly.Python.ORDER_ATOMIC];
+		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 
