@@ -13,6 +13,27 @@
 import Blockly from 'node-blockly/browser';
 
 // Category : Data
+const data = {
+	name : 'Data',
+	category : 'Data',
+	block : {
+		init : function() {
+			this.jsonInit({
+				message0 : '학습 %1 테스트 %2',
+				args0 : [{
+					"type": "input_value",
+					"name": "train"		   
+				},{
+					"type": "input_value",
+					"name": "test"		   
+				}],
+				nextStatement : null,
+				colour: 200,
+				tooltip: 'Data',
+			});
+		},
+	},
+}
 const trainData = {
 	name : 'TrainData',
 	category : 'Data',
@@ -70,7 +91,7 @@ const model = {
 		init : function() {
 			this.jsonInit({
 				type : 'block_type',
-				message0 : '학습 방법 %1',
+				message0 : 'Layer %1',
 				args0 : [{
 					type : 'input_statement',
 					name : 'container'	
@@ -83,7 +104,6 @@ const model = {
 		},
 	},
 }
-
 const modelLayer = {
 	name : 'ModelLayer',
 	category : 'Layer',
@@ -113,6 +133,28 @@ const modelLayer = {
 	},
 };
 // Category : Training
+const training = {
+	name : 'training',
+	category : 'Training',
+	block : {
+		init : function() {
+			this.jsonInit({
+				message0 : '학습 %1 복습 %2',
+				args0 : [{
+					type : 'input_value',
+					name : 'learn',
+				},{
+					type : 'input_value',
+					name : 'epoch',
+				}],
+				previousStatement : null,
+				colour : 100,
+				tooltip : 'training',
+			});
+		},
+	},
+}
+
 const learningRate = {
 	name : 'LearningRate',
 	category : 'Training',
@@ -129,6 +171,7 @@ const learningRate = {
 						["빠르게","2000"]
 					],
 				},],
+				output: 'String',
 				colour : 110,
 				tooltip : 'LearningRate',
 			});
@@ -155,6 +198,7 @@ const epochs = {
 						["안한다","2"]
 					],					
 				},],
+				output: 'String',
 				colour : 120,
 				tooltip : 'Epochs',
 			});
@@ -168,10 +212,12 @@ const epochs = {
 };
 
 const blocks =[
+	data,
 	trainData, 
 	testData,
 	model, 
 	modelLayer, 
+	training,
 	learningRate,
 	epochs
 ]
