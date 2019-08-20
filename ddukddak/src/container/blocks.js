@@ -153,10 +153,10 @@ const model = {
 	generator : (block) => {
 		const train = `${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
 		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const model =  `${Blockly.JavaScript.statementToCode(block, 'model') || '0'}`;
+		const model =  `${Blockly.JavaScript.statementToCode(block, 'model')}`;
 		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
 		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const code = `${train}${test}${model}${rate}${epoch}`;
+		const code = `${train+"\n"}${test+"\n"}${model+"\n"}${rate+"\n"}${epoch+"\n"}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
