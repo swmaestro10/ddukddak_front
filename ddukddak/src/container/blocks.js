@@ -100,8 +100,8 @@ const epochs = {
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
-						["한다","1"],
-						["안한다","2"]
+						["한다","2"],
+						["안한다","1"]
 					],					
 				},],
 				output: 'String',
@@ -144,7 +144,6 @@ const model = {
 					type : 'input_value',
 					name : 'epoch',
 				}],
-				output: 'String',
 				colour : 50,
 				tooltip : 'Model',
 			});
@@ -163,7 +162,7 @@ const Layer = {
 	block : {
 		init : function() {
 			this.jsonInit({
-				message0 : '학습 속도 %1',
+				message0 : '학습 방법 %1',
 				args0 : [{
 					type : 'field_dropdown',
 					name : 'SELECT',
