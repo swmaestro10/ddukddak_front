@@ -23,7 +23,6 @@ const TrainData = {
 				args0 : [{
 					type: 'field_input',
 					name: 'NUM',
-					check: 'Int', 
 				},],
 				colour: 210,
 				tooltip: 'TrainData',
@@ -31,7 +30,7 @@ const TrainData = {
 		},
 	},
 	generator : (block) => {
-		const num = `'${block.getFieldValue('NUM')}'`;
+		const num = `'${block.getFieldValue('NUM')}'` || '\'\'';
 		const code = `training_num = ${num}<br />`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
@@ -46,7 +45,6 @@ const TestData = {
 				args0 : [{
 					type: 'field_input',
 					name: 'NUM',
-					check: 'Int', 
 				},],
 				colour: 220,
 				tooltip: 'TestData',
@@ -54,7 +52,7 @@ const TestData = {
 		},
 	},
 	generator : (block) => {
-		const num = `'${block.getFieldValue('NUM')}'`;
+		const num = `'${block.getFieldValue('NUM')}'` || '\'\'';
 		const code = `test_num = ${num}<br />`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
