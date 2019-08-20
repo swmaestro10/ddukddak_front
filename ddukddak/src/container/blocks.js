@@ -23,12 +23,13 @@ const data = {
 				args0 : [{
 					type: 'input_value',
 					name: 'train',
+					check : 'String',
 				},{
 					type: 'input_value',
 					name: 'test',   
+					check : 'String',
 				}],
-				output: null,
-				nextStatement : null,
+				nextStatement : 'String',
 				colour: 200,
 				tooltip: 'Data',
 			});
@@ -51,7 +52,6 @@ const trainData = {
 				args0 : [{
 					type: 'field_input',
 					name: 'NUM',
-					check: 'String',
 				},],
 				output: 'String',
 				colour: 210,
@@ -75,7 +75,6 @@ const testData = {
 				args0 : [{
 					type: 'field_input',
 					name: 'NUM',
-					check: 'String',
 				},],
 				output: 'String',
 				colour: 220,
