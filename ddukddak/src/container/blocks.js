@@ -190,15 +190,15 @@ const Layer = {
 	},
 };
 
-const Layer = {
-	name : 'modelLayer',
+const Layer2 = {
+	name : 'modelLayer2',
 	category : 'modelLayer',
 	block : {
 		init : function() {
 			this.jsonInit({
 				message0 : 'test',
 				colour : 165,
-				tooltip : 'modelLayer',
+				tooltip : 'modelLayer2',
 				nextStatement : 'String',
 				previousStatement : 'String',
 			});
@@ -214,6 +214,7 @@ const blocks =[
 	trainData, 
 	testData,
 	Layer,
+	Layer2,
 	learningRate,
 	epochs
 ];
