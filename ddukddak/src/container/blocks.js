@@ -54,7 +54,7 @@ const trainData = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
-		const code = `training_num=${message}`+<br />;
+		const code = `training_num=${message} `;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
@@ -78,7 +78,7 @@ const testData = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
-		const code = `test_num=${message}`+<br />;
+		const code = `test_num=${message} `;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
@@ -128,7 +128,7 @@ const modelLayer = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `${message}`+<br />;
+		const code = `${message} `;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
@@ -179,7 +179,7 @@ const learningRate = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `learning_rate = ${message}`+<br />;
+		const code = `learning_rate = ${message} `;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
@@ -206,7 +206,7 @@ const epochs = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `num_epochs = ${message}`+<br />;
+		const code = `num_epochs = ${message} `;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
