@@ -156,7 +156,7 @@ const model = {
 		const model =  `${Blockly.JavaScript.statementToCode(block, 'model') || '0'}`;
 		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
 		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const code = `${train}${test}${model}${rate}${epoch}`
+		const code = `${train}${test}${model}${rate}${epoch}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -184,7 +184,7 @@ const Layer = {
 		},
 	},
 	generator : (block) => {
-		const message = `${Blockly.JavaScript.valueToCode(block,'SELECT',Blockly.JavaScript.ORDER_ATOMIC)}`;
+		const message = `${block.getFieldValue('SELECT')}`;
 		const code = `${message}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
