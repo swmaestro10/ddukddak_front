@@ -6,15 +6,7 @@ import BlocklyDrawer, {Block, Category} from 'react-blockly-drawer';
 
 import {fetchCode} from '../action/index';
 
-import {TrainData, 
-	TestData, 
-	ModelLayer1, 
-	ModelLayer2,
-	ModelLayer3,
-	LearningRate,
-    Epochs,
-    helloWorld
-} from './blocks';
+import {blocks} from './blocks';
 
 import './block_terminal.css'
 
@@ -32,15 +24,7 @@ class BlockTerminal extends Component{
         <div className="block_terminal">
             <BlocklyDrawer
                 workspaceXML = {this.state.workspace}
-                tools={[TrainData, 
-                    TestData, 
-                    ModelLayer1, 
-                    ModelLayer2,
-                    ModelLayer3,
-                    LearningRate,
-                    Epochs,
-                    helloWorld
-                ]}
+                tools={blocks}
                 onChange={(code,workspace) => {
                     if(code !== ""){
                         this.onChangeState(code,workspace);

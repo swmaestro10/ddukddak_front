@@ -224,7 +224,7 @@ const helloWorld =  {
     },
   };
 
-export {
+blocks =[
 	TrainData, 
 	TestData, 
 	ModelLayer1, 
@@ -233,4 +233,7 @@ export {
 	LearningRate,
 	Epochs,
 	helloWorld
+]
+export {
+	blocks
 };
