@@ -197,7 +197,7 @@ const Epochs = {
 	},
 };
 
-const blocks = [
+export {
 	TrainData, 
 	TestData, 
 	ModelLayer1, 
@@ -205,8 +205,4 @@ const blocks = [
 	ModelLayer3,
 	LearningRate,
 	Epochs
-]
-
-export {
-	blocks
 };
