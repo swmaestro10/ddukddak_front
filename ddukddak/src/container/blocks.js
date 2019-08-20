@@ -25,6 +25,7 @@ const trainData = {
 					name: 'NUM',
 					check: 'String',
 				},],
+				output: 'String',
 				colour: 210,
 				tooltip: 'TrainData',
 			});
@@ -48,6 +49,7 @@ const testData = {
 					name: 'NUM',
 					check: 'String',
 				},],
+				output: 'String',
 				colour: 220,
 				tooltip: 'TestData',
 			});
