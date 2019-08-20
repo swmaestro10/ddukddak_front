@@ -13,7 +13,7 @@
 import Blockly from 'node-blockly/browser';
 
 // Category : Data
-const TrainData = {
+const trainData = {
 	name : 'TrainData',
 	category : 'Data',
 	block : {
@@ -30,12 +30,12 @@ const TrainData = {
 		},
 	},
 	generator : (block) => {
-		const num = `'${block.getFieldValue('NUM')}'` || '\'\'';
-		const code = `training_num = ${num}<br />`;
+		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
+		const code = `'training_num=${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
-const TestData = {
+const testData = {
 	name : 'TestData',
 	category : 'Data',
 	block : {
@@ -52,14 +52,14 @@ const TestData = {
 		},
 	},
 	generator : (block) => {
-		const num = `'${block.getFieldValue('NUM')}'` || '\'\'';
-		const code = `test_num = ${num}<br />`;
+		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
+		const code = `'test_num=${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
 
 // Category : Layer
-const ModelLayer1 = {
+const modelLayer1 = {
 	name : 'ModelLayer1',
 	category : 'Layer',
 	block : {
@@ -70,8 +70,8 @@ const ModelLayer1 = {
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
-						["A 방법","nn.ReLU"],
-						["B 방법","nn.LogSigmoid"]
+						["A","nn.ReLU"],
+						["B","nn.LogSigmoid"]
 					],					
 				},],
 				colour : 160,
@@ -81,12 +81,12 @@ const ModelLayer1 = {
 		},
 	},
 	generator : (block) => {
-		const model = `'${block.getFieldValue('SELECT')}'`;
-		const code = `${model}<br />`;
+		const message = `'${block.getFieldValue('SELECT')}'`;
+		const code = `'${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
-const ModelLayer2 = {
+const modelLayer2 = {
 	name : 'ModelLayer2',
 	category : 'Layer',
 	block : {
@@ -97,8 +97,8 @@ const ModelLayer2 = {
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
-						["A 방법","nn.ReLU"],
-						["B 방법","nn.LogSigmoid"]
+						["A","nn.ReLU"],
+						["B","nn.LogSigmoid"]
 					],					
 				},],
 				colour : 165,
@@ -109,12 +109,12 @@ const ModelLayer2 = {
 		},
 	},
 	generator : (block) => {
-		const model = `'${block.getFieldValue('SELECT')}'`;
-		const code = `${model}<br />`;
+		const message = `'${block.getFieldValue('SELECT')}'`;
+		const code = `'${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
-const ModelLayer3 = {
+const modelLayer3 = {
 	name : 'ModelLayer3',
 	category : 'Layer',
 	block : {
@@ -125,8 +125,8 @@ const ModelLayer3 = {
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
-						["A 방법","nn.ReLU"],
-						["B 방법","nn.LogSigmoid"]
+						["A","nn.ReLU"],
+						["B","nn.LogSigmoid"]
 					],					
 				},],
 				colour : 170,
@@ -136,14 +136,14 @@ const ModelLayer3 = {
 		},
 	},
 	generator : (block) => {
-		const model = `'${block.getFieldValue('SELECT')}'`;
-		const code = `${model}<br />`;
+		const message = `'${block.getFieldValue('SELECT')}'`;
+		const code = `'${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
  
 // Category : Training
-const LearningRate = {
+const learningRate = {
 	name : 'LearningRate',
 	category : 'Training',
 	block : {
@@ -165,12 +165,12 @@ const LearningRate = {
 		},
 	},
 	generator : (block) => {
-		const select = `'${block.getFieldValue('SELECT')}'`;
-		const code = `learning_rate = ${select}<br />`;
+		const message = `'${block.getFieldValue('SELECT')}'`;
+		const code = `'learning_rate = ${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
-const Epochs = {
+const epochs = {
 	name : 'Epochs',
 	category : 'Training',
 	block : {
@@ -191,48 +191,20 @@ const Epochs = {
 		},
 	},
 	generator : (block) => {
-		const select = `'${block.getFieldValue('SELECT')}'`;
-		const code = `num_epochs = ${select}<br />`;
+		const message = `'${block.getFieldValue('SELECT')}'`;
+		const code = `'num_epochs = ${message}<br />'`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
 
-const helloWorld =  {
-    name: 'HelloWorld',
-    category: 'Demo',
-    block: {
-      init: function () {
-        this.jsonInit({
-          message0: 'Hello %1',
-          args0: [
-            {
-              type: 'field_input',
-              name: 'NAME',
-              check: 'String',
-            },
-          ],
-          output: 'String',
-          colour: 160,
-          tooltip: 'Says Hello',
-        });
-      },
-    },
-    generator: (block) => {
-      const message = `'${block.getFieldValue('NAME')}'` || '\'\'';
-      const code = `console.log('Hello ${message}')`;
-      return [code, Blockly.JavaScript.ORDER_MEMBER];
-    },
-  };
-
 const blocks =[
-	TrainData, 
-	TestData, 
-	ModelLayer1, 
-	ModelLayer2,
-	ModelLayer3,
-	LearningRate,
-	Epochs,
-	helloWorld
+	trainData, 
+	testData, 
+	modelLayer1, 
+	modelLayer2,
+	modelLayer3,
+	learningRate,
+	epochs,
 ]
 export {
 	blocks
