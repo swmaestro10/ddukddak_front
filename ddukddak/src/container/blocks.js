@@ -224,7 +224,7 @@ const helloWorld =  {
     },
   };
 
-blocks =[
+const blocks =[
 	TrainData, 
 	TestData, 
 	ModelLayer1, 
