@@ -33,6 +33,12 @@ const data = {
 			});
 		},
 	},
+	generator : (block) => {
+		const message1 = `'${block.getFieldValue('train')}'` || '\'\'';
+		const message2 = `'${block.getFieldValue('test')}'` || '\'\'';
+		const code = message1+'\n'+message2;
+		return [code, Blockly.Python.ORDER_ATOMIC];
+	},
 }
 const trainData = {
 	name : 'TrainData',
@@ -119,6 +125,7 @@ const modelLayer = {
 						["B","nn.LogSigmoid"]
 					],					
 				},],
+				output: 'String',
 				colour : 165,
 				tooltip : 'ModelLayer',
 				nextStatement : null,
@@ -152,6 +159,12 @@ const training = {
 				tooltip : 'training',
 			});
 		},
+	},
+	generator : (block) => {
+		const message1 = `'${block.getFieldValue('learn')}'` || '\'\'';
+		const message2 = `'${block.getFieldValue('epoch')}'` || '\'\'';
+		const code = message1+'\n'+message2;
+		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 }
 
