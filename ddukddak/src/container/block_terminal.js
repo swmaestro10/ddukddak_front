@@ -33,6 +33,7 @@ class BlockTerminal extends Component{
                 appearance = {
                     {
                         categories : {
+                            Model : {colour : '50'},
                             Data : { colour : '200' },
                             Layer : { colour : '150' },
                             Training : { colour : '100' },

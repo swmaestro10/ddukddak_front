@@ -13,35 +13,6 @@
 import Blockly from 'node-blockly/browser';
 
 // Category : Data
-const data = {
-	name : 'Data',
-	category : 'Data',
-	block : {
-		init : function() {
-			this.jsonInit({
-				message0 : '학습 %1 테스트 %2',
-				args0 : [{
-					type: 'input_value',
-					name: 'train',
-					check : 'String',
-				},{
-					type: 'input_value',
-					name: 'test',   
-					check : 'String',
-				}],
-				nextStatement : 'String',
-				colour: 200,
-				tooltip: 'Data',
-			});
-		},
-	},
-	generator : (block) => {
-		const message1 = `'${block.getFieldValue('train')}'` || '\'\'';
-		const message2 = `'${block.getFieldValue('test')}'` || '\'\'';
-		const code = message1+'\n'+message2;
-		return [code, Blockly.Python.ORDER_ATOMIC];
-	},
-}
 const trainData = {
 	name : 'TrainData',
 	category : 'Data',
@@ -90,26 +61,6 @@ const testData = {
 };
 
 // Category : Layer
-const model = {
-	name : 'Model',
-	category : 'Layer',
-	block : {
-		init : function() {
-			this.jsonInit({
-				type : 'block_type',
-				message0 : 'Layer %1',
-				args0 : [{
-					type : 'input_statement',
-					name : 'container'	
-				},],
-				colour : 150,
-				tooltip : 'Model',
-				nextStatement : null,
-				previousStatement : null,
-			});
-		},
-	},
-}
 const modelLayer = {
 	name : 'ModelLayer',
 	category : 'Layer',
@@ -140,34 +91,6 @@ const modelLayer = {
 	},
 };
 // Category : Training
-const training = {
-	name : 'training',
-	category : 'Training',
-	block : {
-		init : function() {
-			this.jsonInit({
-				message0 : '학습 %1 복습 %2',
-				args0 : [{
-					type : 'input_value',
-					name : 'learn',
-				},{
-					type : 'input_value',
-					name : 'epoch',
-				}],
-				previousStatement : null,
-				colour : 100,
-				tooltip : 'training',
-			});
-		},
-	},
-	generator : (block) => {
-		const message1 = `'${block.getFieldValue('learn')}'` || '\'\'';
-		const message2 = `'${block.getFieldValue('epoch')}'` || '\'\'';
-		const code = message1+'\n'+message2;
-		return [code, Blockly.Python.ORDER_ATOMIC];
-	},
-}
-
 const learningRate = {
 	name : 'LearningRate',
 	category : 'Training',
@@ -223,17 +146,55 @@ const epochs = {
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
+// model
+const model = {
+	name : 'Model',
+	category : 'Model',
+	block : {
+		init : function() {
+			this.jsonInit({
+				message0 : 'Train_Set %1 Test_Set %2',
+				args0 : [{
+					type : 'input_value',
+					name : 'train',
+				},{
+					type : 'input_value',
+					name : 'test',
+				}],
+				message1 : 'Model %1',
+				args1 : [{
+					type : 'input_statement',
+					name : 'model',
+				},],
+				message2 : 'LearningRate %1 Epochs %2',
+				args2 : [{
+					type : 'input_value',
+					name : 'rate',
+				},{
+					type : 'input_value',
+					name : 'epoch',
+				}],
+				output: 'String',
+				colour : 120,
+				tooltip : 'Model',
+			});
+		},
+	},
+	generator : (block) => {
+		const message = `'${block.getFieldValue('train')}'`;
+		const code = `test_code`;
+		return [code, Blockly.Python.ORDER_ATOMIC];
+	},
+};
 
 const blocks =[
-	data,
 	trainData, 
 	testData,
-	model, 
-	modelLayer, 
-	training,
+	modelLayer,
 	learningRate,
-	epochs
-]
+	epochs,
+	model
+];
 export {
 	blocks
 };
