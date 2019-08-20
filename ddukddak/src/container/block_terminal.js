@@ -12,7 +12,9 @@ import {TrainData,
 	ModelLayer2,
 	ModelLayer3,
 	LearningRate,
-    Epochs} from './blocks';
+    Epochs,
+    helloWorld
+} from './blocks';
 
 import './block_terminal.css'
 
@@ -36,7 +38,9 @@ class BlockTerminal extends Component{
                     ModelLayer2,
                     ModelLayer3,
                     LearningRate,
-                    Epochs]}
+                    Epochs,
+                    helloWorld
+                ]}
                 onChange={(code,workspace) => {
                     if(code !== ""){
                         this.onChangeState(code,workspace);
