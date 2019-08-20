@@ -180,7 +180,7 @@ const Layer = {
 		},
 	},
 	generator : (block) => {
-		const message = `'${Blockly.Python.statementToCode(block,'SELECT')}'`;
+		const message = `'${Blockly.Python.valueToCode(block,'SELECT',Blockly.Python.ORDER_ATOMIC)}'`;
 		const code = `${message}`;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
