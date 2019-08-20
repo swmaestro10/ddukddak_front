@@ -67,14 +67,14 @@ const modelLayer = {
 	block : {
 		init : function() {
 			this.jsonInit({
-				message0 : '학습 방법 %1',
+				message0 : '학습 속도 %1',
 				args0 : [{
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
 						["A","nn.ReLU"],
-						["B","nn.LogSigmoid"]
-					],					
+						["B","nn.LogSigmoid"],
+					],
 				},],
 				output: 'String',
 				colour : 165,
@@ -86,7 +86,7 @@ const modelLayer = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `${message} `;
+		const code = `learning_rate = ${message} `;
 		return [code, Blockly.Python.ORDER_ATOMIC];
 	},
 };
@@ -175,7 +175,7 @@ const model = {
 					name : 'epoch',
 				}],
 				output: 'String',
-				colour : 120,
+				colour : 50,
 				tooltip : 'Model',
 			});
 		},
