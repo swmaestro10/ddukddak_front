@@ -21,11 +21,11 @@ const data = {
 			this.jsonInit({
 				message0 : '학습 %1 테스트 %2',
 				args0 : [{
-					"type": "input_value",
-					"name": "train"		   
+					type: 'input_value',
+					name: 'train',
 				},{
-					"type": "input_value",
-					"name": "test"		   
+					type: 'input_value',
+					name: 'test',   
 				}],
 				nextStatement : null,
 				colour: 200,
