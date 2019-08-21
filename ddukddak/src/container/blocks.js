@@ -125,26 +125,20 @@ const model = {
 			this.jsonInit({
 				message0 : 'Train_Set %1 Test_Set %2',
 				args0 : [{
-					type : 'input_value',
-					name : 'train',
+					type : 'input_value', name : 'train',
 				},{
-					type : 'input_value',
-					name : 'test',
+					type : 'input_value', name : 'test',
 				}],
 				message1 : 'Model %1',
 				args1 : [{
-					type : 'input_statement',
-					name : 'model',
+					type : 'input_statement', name : 'model',
 				},],
 				message2 : 'LearningRate %1 Epochs %2',
 				args2 : [{
-					type : 'input_value',
-					name : 'rate',
+					type : 'input_value', name : 'rate',
 				},{
-					type : 'input_value',
-					name : 'epoch',
+					type : 'input_value', name : 'epoch',
 				}],
-				output : 'null',
 				colour : 50,
 				tooltip : 'Model',
 			});
@@ -153,10 +147,10 @@ const model = {
 	generator : (block) => {
 		const train = `${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
 		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const model =  `${Blockly.JavaScript.statementToCode(block, 'model')}`;
 		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
 		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const code = `${train+'\n'}${test+'\n'}${model+'\n'}${rate+'\n'}${epoch+'\n'}`;
+		const model = `${Blockly.JavaScript.statementToCode(block, 'model')}`;
+		const code = `[${train},${test},${rate},${epoch},${model}]`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -167,6 +161,8 @@ const Layer = {
 	block : {
 		init : function() {
 			this.jsonInit({
+				nextStatement : 'String',
+				previousStatement : 'String',
 				message0 : '학습 방법 %1',
 				args0 : [{
 					type : 'field_dropdown',
@@ -178,8 +174,6 @@ const Layer = {
 				},],
 				colour : 165,
 				tooltip : 'modelLayer',
-				nextStatement : 'String',
-				previousStatement : 'String',
 			});
 		},
 	},
