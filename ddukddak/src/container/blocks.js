@@ -129,16 +129,18 @@ const model = {
 				},{
 					type : 'input_value', name : 'test',
 				}],
-				message1 : 'Epochs %1 Model %2',
+				message1 : 'Model %1',
 				args1 : [{
 					type : 'input_statement', name : 'model',
-				},{
-					type : 'input_value', name : 'epoch',
 				},],
-				message2 : 'LearningRate %1',
+				message2 : 'LearningRate %1 Epochs %2',
 				args2 : [{
 					type : 'input_value', name : 'rate',
-				},],
+				},{
+					type : 'input_value', name : 'epoch',
+				}],
+				previousStatement: null,
+				nextStatement: null,
 				colour : 50,
 				tooltip : 'Model',
 			});
@@ -161,8 +163,6 @@ const Layer = {
 	block : {
 		init : function() {
 			this.jsonInit({
-				nextStatement : 'String',
-				previousStatement : 'String',
 				message0 : '학습 방법 %1',
 				args0 : [{
 					type : 'field_dropdown',
@@ -174,6 +174,8 @@ const Layer = {
 				},],
 				colour : 165,
 				tooltip : 'modelLayer',
+				previousStatement: null,
+				nextStatement: null,
 			});
 		},
 	},
