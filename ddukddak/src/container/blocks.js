@@ -144,7 +144,7 @@ const model = {
 					type : 'input_value',
 					name : 'epoch',
 				}],
-				output : 'String',
+				output : 'null',
 				colour : 50,
 				tooltip : 'Model',
 			});
@@ -156,7 +156,7 @@ const model = {
 		const model =  `${Blockly.JavaScript.statementToCode(block, 'model')}`;
 		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
 		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const code = `${train+"</br>"}${test+"\n"}${model+"\n"}${rate+"\n"}${epoch+"\n"}`;
+		const code = `${train+'\n'}${test+'\n'}${model+'\n'}${rate+'\n'}${epoch+'\n'}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -187,25 +187,6 @@ const Layer = {
 		const message = `${block.getFieldValue('SELECT')}`;
 		const code = `${message}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
-	},
-};
-
-const Layer2 = {
-	name : 'modelLayer2',
-	category : 'modelLayer',
-	block : {
-		init : function() {
-			this.jsonInit({
-				message0 : 'test',
-				colour : 165,
-				tooltip : 'modelLayer2',
-				nextStatement : 'String',
-				previousStatement : 'String',
-			});
-		},
-	},
-	generator : () => {
-		return ['test', Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
 
