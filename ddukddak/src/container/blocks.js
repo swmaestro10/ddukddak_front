@@ -195,7 +195,6 @@ const blocks =[
 	trainData, 
 	testData,
 	Layer,
-	Layer2,
 	learningRate,
 	epochs
 ];
