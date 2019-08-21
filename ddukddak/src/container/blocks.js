@@ -129,16 +129,16 @@ const model = {
 				},{
 					type : 'input_value', name : 'test',
 				}],
-				message1 : 'Model %1',
+				message1 : 'Epochs %1 Model %2',
 				args1 : [{
 					type : 'input_statement', name : 'model',
-				},],
-				message2 : 'LearningRate %1 Epochs %2',
-				args2 : [{
-					type : 'input_value', name : 'rate',
 				},{
 					type : 'input_value', name : 'epoch',
-				}],
+				},],
+				message2 : 'LearningRate %1',
+				args2 : [{
+					type : 'input_value', name : 'rate',
+				},],
 				colour : 50,
 				tooltip : 'Model',
 			});
