@@ -1,15 +1,3 @@
-//						{
-//							type : 'input_dummy',
-//						},
-//						{
-//							type : 'input_value',
-//							name : 'number_b',
-//							check : 'Number'
-//						}
-//					inputsInline : true,
-//					output: 'String',
-//					nextStatement : null,
-//					previousStatement : null,
 import Blockly from 'node-blockly/browser';
 
 // Category : Data
