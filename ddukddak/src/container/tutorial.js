@@ -11,7 +11,7 @@ class Tutorial extends React.Component{
 	}
 	updateDiscription = async() => {
 		const result = await axios.get(
-			'http://ddukddak.io/user/login',
+			'http://ddukddak.io/user/signin',
 			{
 				params : {
 					email : '1@test.com',
