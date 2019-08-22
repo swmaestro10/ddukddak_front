@@ -127,20 +127,19 @@ const model = {
 				},{
 					type : 'input_value', name : 'epoch',
 				}],
-				previousStatement: null,
-				nextStatement: null,
+				output : null,
 				colour : 50,
 				tooltip : 'Model',
 			});
 		},
 	},
 	generator : (block) => {
-		const train = `${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
-		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || '0'}`;
+		const train = `${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
+		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
+		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
+		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
 		const model = `${Blockly.JavaScript.statementToCode(block, 'model')}`;
-		const code = `[${train},${test},${rate},${epoch},${model}]`;
+		const code = `${train};${test};${rate};${epoch};${model}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };

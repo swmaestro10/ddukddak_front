@@ -26,9 +26,7 @@ class BlockTerminal extends Component{
                 workspaceXML = {this.state.workspace}
                 tools={blocks}
                 onChange={(code,workspace) => {
-                    if(code !== ""){
                         this.onChangeState(code,workspace);
-                    }
                 }}
                 appearance = {
                     {

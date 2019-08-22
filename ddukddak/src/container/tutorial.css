@@ -2,7 +2,7 @@
 	float: left;
 	width : 30%;
 	height : 820px;
-	background-color : #2f2f2f;
+	background-color : #FFF;
 	display : inline-block;
 }
 
@@ -10,14 +10,22 @@
  	width : 100%;
 	height : 100px;
 	color: white;
+	background-color : #2592B6;
 	text-align: center;
+}
+.course_title > h1 {
+	margin : 7%;
+	display : inline-block;
 }
 
 .course_tutorial {
-	height : 620px;
-	background-color: aliceblue;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin : 5%;
+	width : 90%;
+}
+.course_tutorial > h4 {
+	margin : 0;
+	color : #1C83A5;
+	font-size :2rem;
 }
 
 .course_progress {
@@ -26,8 +34,22 @@
 }
 
 .course_button {
-	width: 33%;
-	height: 100px;
-	text-align : center;
+	margin : 5%;
+	width: 40%;
+	height: 40px;
 	display: inline-block;
+	background-color : #FD7700;
+	text-align : center;
+	border-radius : 15px;
+	box-shadow : 1px 1px 1px 1px gray;
+}
+.course_button:hover {
+	background-color : #FA5858;
+}
+
+.course_button > p {
+	color : white;
+	padding : 4px;
+	margin : 0;
+	font-size : 1.3rem;
 }

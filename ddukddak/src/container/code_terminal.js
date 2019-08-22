@@ -21,6 +21,16 @@ class CodeTerminal extends Component {
             .then(response => { console.log(response) })
             .catch(response => { console.log(response) });
     }
+    renderCode() {
+	let codeString = `${this.props.code[0]}`;
+	let codeSplit = codeString.split(';');
+	return codeSplit.map((code) => {
+		if(code !== "")
+			return (<li key={code} className="codes">{code}</li>);
+		return "";
+	});
+    }
+
     render(){
         return(
         <div className = "code_terminal">
@@ -29,8 +39,10 @@ class CodeTerminal extends Component {
             </div>
             <div className = "code_window">
                 <div className="terminal">
-                    {this.props.code[0]}
-                </div>
+			<ul>
+                    		{this.renderCode()}
+                	</ul>
+		</div>
                 <div 
                     className="code_submit"
                     onClick={this.onSubmitCode}>

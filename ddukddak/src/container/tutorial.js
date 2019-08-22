@@ -26,13 +26,19 @@ class Tutorial extends React.Component{
         return (
 			<section className="course_container">
 				<div className="course_title">
-					<h1>Machine Learning</h1>
+					<h1>Machine Learning TEST Class</h1>
 				</div>
 				<div className="course_tutorial">
-					{this.state.discription}
+					<h4>Step 1 - Training Data</h4>
+					{this.state.discription}	
 				</div>
 				<div className="course_progress">
-					3
+					<div className="course_button">
+						<p>previous</p>
+					</div>
+					<div className="course_button">
+						<p>next</p>
+					</div>					
 				</div>
 			</section>	
 	)

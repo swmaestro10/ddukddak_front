@@ -7,8 +7,15 @@ export default class Header extends Component {
             <div className="Header">
                 <div>
                     <div className="Header_logo">
-                        <h1>DDUK DDAK LEARNING</h1>
+                        <h1>뚝딱러닝</h1>
                     </div>
+		    <div className="Header_info">
+			<ul>
+				<li>OtherClass</li>
+				<li>LogIn</li>
+				<li>SignIn</li>
+			</ul>
+		    </div>
                 </div>
             </div>
         )

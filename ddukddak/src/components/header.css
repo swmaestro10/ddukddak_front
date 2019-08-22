@@ -1,16 +1,39 @@
 .Header {
-    background-color: dodgerblue;
+    background-color: #00B7EF;
     width: 100%;
-    height: 80px;
+    height: 70px;
+}
+.Header_logo {
+	display :inline-block;
+	width : 50%;
 }
 
-.Header_logo {
-    width: 100%;
-    height: 100%;
-}
 .Header_logo > h1 {
+	display : inline-block;
+	padding : 15px 16px 13px 25px;
 	margin : 0;
-	padding : 1.2rem;
 	color : white;
-	text-align : center;
+	text-align : left;
+}
+.Header_info {
+	display : inline-block;
+	width : 50%;
+}
+.Header_info > ul {
+	text-align : right;
+	list-style : none;
+	margin : 0;
+	padding : 0;
+}
+.Header_info > ul >li {
+	color : white;
+	display : inline;
+	margin : 0;
+	padding : 10px;
+	font-size : 1rem;
+	border : 0;
+}
+.Header_info > ul >li:hover {
+	color : #F4FA58;
+	font-size : 1.1rem;
 }
