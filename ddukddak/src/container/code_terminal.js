@@ -57,7 +57,7 @@ class CodeTerminal extends Component {
 	    	<div 
                     className="code_submit"
                     onClick={this.onSubmitCode}>
-                    <h3> Submit Code </h3>
+                    <h3> Submit </h3>
                 </div>
             </div>
         </div>
