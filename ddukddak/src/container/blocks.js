@@ -20,7 +20,7 @@ const trainData = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
-		const code = `training_num=${message} `;
+		const code = `training_num=${message}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -43,7 +43,7 @@ const testData = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('NUM')}'` || '\'\'';
-		const code = `test_num=${message} `;
+		const code = `test_num=${message}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -73,7 +73,7 @@ const learningRate = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `learning_rate = ${message} `;
+		const code = `learning_rate=${message}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -100,7 +100,7 @@ const epochs = {
 	},
 	generator : (block) => {
 		const message = `'${block.getFieldValue('SELECT')}'`;
-		const code = `num_epochs = ${message} `;
+		const code = `num_epochs=${message}`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -110,27 +110,13 @@ const model = {
 	category : 'Model',
 	block : {
 		init : function() {
-			this.jsonInit({
-				message0 : 'Train_Set %1 Test_Set %2',
-				args0 : [{
-					type : 'input_value', name : 'train',
-				},{
-					type : 'input_value', name : 'test',
-				}],
-				message1 : 'Model %1',
-				args1 : [{
-					type : 'input_statement', name : 'model',
-				},],
-				message2 : 'LearningRate %1 Epochs %2',
-				args2 : [{
-					type : 'input_value', name : 'rate',
-				},{
-					type : 'input_value', name : 'epoch',
-				}],
-				output : null,
-				colour : 50,
-				tooltip : 'Model',
-			});
+			this.appendValueInput('train').appendField('Train_Set');
+			this.appendValueInput('test').appendField('Test_Set');
+			this.appendValueInput('rate').appendField('LearningRate');
+			this.appendValueInput('epoch').appendField('Epochs');
+			this.setNextStatement(true);
+			this.setColour(50);
+			this.setTooltip('Model');
 		},
 	},
 	generator : (block) => {
@@ -138,51 +124,39 @@ const model = {
 		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
 		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
 		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
-		let branch = `${Blockly.JavaScript.statementToCode(block, 'model')}`;
 		const code = `${train};${test};${rate};${epoch};`;
-		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+		return code;
 	},
 };
 // Category : Layer
 const Layer = {
-	name : 'modelLayer',
+	name : 'Layer',
 	category : 'modelLayer',
 	block : {
 		init : function() {
-			this.jsonInit({
-				message0 : '학습 방법 %1',
-				args0 : [{
-					type : 'field_dropdown',
-					name : 'SELECT',
-					options : [
-						["A","nn_ReLU"],
-						["B","nn_LogSigmoid"],
-					],
-				},],
-				colour : 165,
-				tooltip : 'modelLayer',
-				previousStatement: null,
-				nextStatement: null,
-			});
-		},
+			this.appendValueInput("SELECT").appendField(new Blockly.FieldDropdown([["방법_A","nn_ReLU"], ["방법_B","nn_LogSigmoid"]]), "SELECT");
+			this.setPreviousStatement(true, null);
+    			this.setNextStatement(true, null);
+    			this.setColour(165);
+ 			this.setTooltip("Layer");
+		}
 	},
 	generator : (block) => {
 		const message = `${block.getFieldValue('SELECT')}`;
-		const code = `${message}`;
-		return [code, Blockly.JavaScript.ORDER_ATOMIC];
+		const code = `${message};`;
+		return code;
 	},
 };
-const helloWorld =  {
-  name: 'HelloWorld',
+const modelLayer =  {
+  name: 'modelLayer',
   category: 'modelLayer',
   block: {
     init: function () {
-      this.appendDummyInput()
-          .appendField("repeat untill");
       this.appendStatementInput('DO')
-          .appendField('do');
+          .appendField('Layer');
       this.setPreviousStatement(true);
-      this.setTooltip('here is tooltip');
+      this.setTooltip('modelLayer');
+      this.setColour(180);
     },
   },
   generator: (block) => {
@@ -191,18 +165,17 @@ const helloWorld =  {
       branch = Blockly.JavaScript.INFINITE_LOOP_TRAP.replace(/%1/g,
           '\'block_id_' + block.id + '\'') + branch;
     }
-    return 'while (notDone()) {\n' + branch + '}\n';
+    return branch;
   },
 };
-
 const blocks =[
 	model,
 	trainData, 
 	testData,
 	Layer,
+	modelLayer,
 	learningRate,
-	epochs,
-	helloWorld
+	epochs
 ];
 export {
 	blocks

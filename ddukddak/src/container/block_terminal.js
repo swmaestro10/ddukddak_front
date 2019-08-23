@@ -23,6 +23,7 @@ class BlockTerminal extends Component{
         return(
         <div className="block_terminal">
             <BlocklyDrawer
+		className = "drawer"
                 workspaceXML = {this.state.workspace}
                 tools={blocks}
                 onChange={(code,workspace) => {
