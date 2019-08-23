@@ -21,9 +21,9 @@ class Tutorial extends React.Component{
 				class : '1'
 			})
 			.then(response => {
-					console.log(response);
-					console.log(response.data[1].name);
-					console.log(response.data[1].text_tutorial);
+					console.log(response.data);
+					console.log(response.data.data[1].name);
+					console.log(response.data.data[1].text_tutorial);
 			})
 			.catch(response => { console.log(response) });
 	}
