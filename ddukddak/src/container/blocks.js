@@ -138,8 +138,8 @@ const model = {
 		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
 		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
 		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
-		const model = `${Blockly.JavaScript.statementToCode(block, 'model')}`;
-		const code = `${train};${test};${rate};${epoch};${model}`;
+		let branch = `${Blockly.JavaScript.statementToCode(block, 'model')}`;
+		const code = `${train};${test};${rate};${epoch};`;
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
@@ -172,6 +172,28 @@ const Layer = {
 		return [code, Blockly.JavaScript.ORDER_ATOMIC];
 	},
 };
+const helloWorld =  {
+  name: 'HelloWorld',
+  category: 'modelLayer',
+  block: {
+    init: function () {
+      this.appendDummyInput()
+          .appendField("repeat untill");
+      this.appendStatementInput('DO')
+          .appendField('do');
+      this.setPreviousStatement(true);
+      this.setTooltip('here is tooltip');
+    },
+  },
+  generator: (block) => {
+    var branch = Blockly.JavaScript.statementToCode(block, 'DO');
+    if (Blockly.JavaScript.INFINITE_LOOP_TRAP) {
+      branch = Blockly.JavaScript.INFINITE_LOOP_TRAP.replace(/%1/g,
+          '\'block_id_' + block.id + '\'') + branch;
+    }
+    return 'while (notDone()) {\n' + branch + '}\n';
+  },
+};
 
 const blocks =[
 	model,
@@ -179,7 +201,8 @@ const blocks =[
 	testData,
 	Layer,
 	learningRate,
-	epochs
+	epochs,
+	helloWorld
 ];
 export {
 	blocks
