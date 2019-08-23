@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+import {fetchTerminal} from '../action/index';
 
 import './code_terminal.css';
+
+let count = 0;
 
 class CodeTerminal extends Component {
     constructor(props){
         super(props);
-
         this.onSubmitCode = this.onSubmitCode.bind(this);
+	this.onTerminal = this.onTerminal.bind(this);
     }
     onSubmitCode= async() => {
         const result = await axios.post('http://ddukddak.io/class/sub/submit',{
@@ -20,29 +25,36 @@ class CodeTerminal extends Component {
 		alert(response.data.result) })
             .catch(response => { console.log(response) });
     }
+    onTerminal() {
+	let stat = (this.props.terminal + 1)%2;
+	if(stat === 1){
+		this.props.fetchTerminal(stat);
+	}else{
+		this.props.fetchTerminal(stat);
+	}
+    }
     renderCode() {
 	let codeString = `${this.props.code[0]}`;
 	let codeSplit = codeString.split(';');
 	return codeSplit.map((code) => {
-		if(code !== "")
-			return (<li key={code} className="codes">>>> {code}</li>);
+		if(code !== ""){
+			count = count + 1;
+			return (<li key={count} className="codes">>>> {code}</li>);
+		}
 		return "";
 	});
     }
-
     render(){
         return(
         <div className = "code_terminal">
-            <div className = "code_generator">
+	    <div className = "code_generator" onClick={this.onTerminal}>
                 <h3>Text Code</h3>
             </div>
             <div className = "code_window">
-                <div className="terminal">
-			<ul>
-                    		{this.renderCode()}
-                	</ul>
-		</div>
-                <div 
+                <div className={(this.props.terminal)?"terminal":"terminal_hidden"}>
+			<ul className={(this.props.terminal)?"ul_vi":"ul_no"}>{this.renderCode()}</ul>
+	    	</div>
+	    	<div 
                     className="code_submit"
                     onClick={this.onSubmitCode}>
                     <h3> Submit Code </h3>
@@ -55,8 +67,12 @@ class CodeTerminal extends Component {
 
 function mapStateToProps(state){
     return {
-        code : state.code
+        code : state.code,
+	terminal : state.terminal
     };
 }
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({fetchTerminal},dispatch);
+}
 
-export default connect(mapStateToProps)(CodeTerminal);
+export default connect(mapStateToProps,mapDispatchToProps)(CodeTerminal);

@@ -60,9 +60,9 @@ const learningRate = {
 					type : 'field_dropdown',
 					name : 'SELECT',
 					options : [
-						["느리게","500"],
-						["보통","1000"],
-						["빠르게","2000"]
+						["느리게","0.0005"],
+						["보통","0.001"],
+						["빠르게","0.01"]
 					],
 				},],
 				output: 'String',
@@ -105,28 +105,43 @@ const epochs = {
 	},
 };
 // model
-const model = {
-	name : 'Model',
-	category : 'Model',
+const data_model = {
+	name : 'data_Model',
+	category : 'Data',
 	block : {
 		init : function() {
 			this.appendValueInput('train').appendField('Train_Set');
 			this.appendValueInput('test').appendField('Test_Set');
-			this.appendValueInput('rate').appendField('LearningRate');
-			this.appendValueInput('epoch').appendField('Epochs');
 			this.setNextStatement(true);
-			this.setColour(50);
-			this.setTooltip('Model');
+			this.setColour(290);
+			this.setTooltip('data_Model');
 		},
 	},
 	generator : (block) => {
 		const train = `${Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
 		const test =  `${Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
-		const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
-		const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
-		const code = `${train};${test};${rate};${epoch};`;
+		const code = `${train};${test};`;
 		return code;
 	},
+};
+const set_model = {
+        name : 'set_Model',
+        category : 'Training',
+        block : {
+                init : function() {
+                        this.appendValueInput('rate').appendField('LearningRate');
+                        this.appendValueInput('epoch').appendField('Epochs');
+                        this.setPreviousStatement(true);
+                        this.setColour(260);
+                        this.setTooltip('training_Model');
+                },
+        },
+        generator : (block) => {
+                const rate = `${Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
+                const epoch =  `${Blockly.JavaScript.valueToCode(block, 'epoch', Blockly.JavaScript.ORDER_ATOMIC) || ''}`;
+                const code = `${rate};${epoch};`;
+                return code;
+        },
 };
 // Category : Layer
 const Layer = {
@@ -155,8 +170,9 @@ const modelLayer =  {
       this.appendStatementInput('DO')
           .appendField('Layer');
       this.setPreviousStatement(true);
+      this.setNextStatement(true);
       this.setTooltip('modelLayer');
-      this.setColour(180);
+      this.setColour(330);
     },
   },
   generator: (block) => {
@@ -169,11 +185,12 @@ const modelLayer =  {
   },
 };
 const blocks =[
-	model,
+	data_model,
 	trainData, 
 	testData,
-	Layer,
 	modelLayer,
+	Layer,
+	set_model,
 	learningRate,
 	epochs
 ];

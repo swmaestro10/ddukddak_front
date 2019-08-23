@@ -23,7 +23,7 @@ class BlockTerminal extends Component{
         return(
         <div className="block_terminal">
             <BlocklyDrawer
-		className = "drawer"
+		className = {(this.props.terminal)?"drawer":"drawer_ex"}
                 workspaceXML = {this.state.workspace}
                 tools={blocks}
                 onChange={(code,workspace) => {
@@ -51,6 +51,11 @@ class BlockTerminal extends Component{
         );
     }
 } 
+function mapStateToProps(state){
+	return {
+		terminal : state.terminal
+	};
+}
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({fetchCode},dispatch);
