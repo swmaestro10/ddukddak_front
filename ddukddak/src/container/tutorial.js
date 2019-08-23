@@ -21,9 +21,10 @@ class Tutorial extends React.Component{
 				class : '1'
 			})
 			.then(response => {
-					console.log(response.data);
-					console.log(response.data.data[1].name);
-					console.log(response.data.data[1].text_tutorial);
+				this.setState({
+					title : response.data[1][0].name,
+					discription : response.data[1][0].tutorial
+				});
 			})
 			.catch(response => { console.log(response) });
 	}

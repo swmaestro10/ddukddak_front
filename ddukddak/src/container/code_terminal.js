@@ -16,7 +16,7 @@ class CodeTerminal extends Component {
                     subclass : '1',
                     code : `'${this.props.code[0]}'`
             })
-            .then(response => { alert('success!') })
+            .then(response => { alert(response.data.result) })
             .catch(response => { console.log(response) });
     }
     renderCode() {
