@@ -42,6 +42,7 @@ class Tutorial extends React.Component{
 					title : response.data[1][0].name,
 					discription : response.data[1][0].tutorial
 				});
+				console.log(response.data);
 			})
 			.catch(response => { console.log(response) });
 	}
