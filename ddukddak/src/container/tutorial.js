@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import './tutorial.css';
-import {book}from './book';
 
 class Tutorial extends React.Component{
 	constructor(props){
@@ -23,7 +22,7 @@ class Tutorial extends React.Component{
 			});
 	}
 	pageUp(){
-		if(this.state.page < book.length-1 )
+		if(this.state.page < this.state.discription.length-1 )
 			this.setState({
 				...this.state,
 				page : this.state.page + 1
@@ -40,9 +39,9 @@ class Tutorial extends React.Component{
 				this.setState({
 					...this.state,
 					title : response.data[1][0].name,
-					discription : response.data[1][0].tutorial
+					discription : eval(response.data[1][0].tutorial)
 				});
-				console.log(response.data);
+				console.log(eval(response.data[1][0].tutorial));
 			})
 			.catch(response => { console.log(response) });
 	}
@@ -53,10 +52,9 @@ class Tutorial extends React.Component{
 					<h1>{this.state.title}</h1>
 				</div>
 				<div className="course_tutorial">
-					<h4>Step {this.state.page} - {book[this.state.page].step}</h4>
-					<p>{this.state.discription}</p>
-					<p>{book[this.state.page].explain}</p>
-					<p>{book[this.state.page].trying}</p>
+					<h4>Step {this.state.page} - {this.state.discription[this.state.page].step}</h4>
+					<p>{this.state.discription[this.state.page].explain}</p>
+					<p>{this.state.discription[this.state.page].trying}</p>
 				</div>
 				<div className="course_progress">
 					<div className="course_button" onClick={this.pageDown}>
